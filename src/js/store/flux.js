@@ -1,42 +1,87 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			contact: []
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
+			setUser: user => {
+				setStore({ user: user });
 			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
+			addContact: async data => {
+				let response = await fetch("https://assets.breatheco.de/apis/fake/contact/", {
+					method: "POST",
+					mode: "cors",
+					redirect: "follow",
+					headers: new Headers({
+						"Content-Type": "application/json"
+					}),
+					body: JSON.stringify({
+						full_name: data.name,
+						email: data.email,
+						agenda_slug: "Richard_Contacts",
+						address: data.address,
+						phone: data.phone
+					})
 				});
+				response = await response.json();
+				getActions().getAllContact();
+			},
+			getContact: async id => {
+				let response = await fetch(`https://assets.breatheco.de/apis/fake/contact/` + id, {
+					method: "GET",
+					mode: "cors",
+					redirect: "follow",
+					headers: new Headers({
+						"Content-Type": "application/json"
+					})
+				});
+				response = await response.json();
+				getActions().setUser(response);
+			},
+			getAllContact: async () => {
+				let response = await fetch(`https://assets.breatheco.de/apis/fake/contact/agenda/Richard_Contacts`, {
+					method: "GET",
+					mode: "cors",
+					redirect: "follow",
+					headers: new Headers({
+						"Content-Type": "application/json"
+					})
+				});
+				response = await response.json();
+				setStore({ contact: response });
+			},
+			editContact: async (id, data) => {
+				let response = await fetch("https://assets.breatheco.de/apis/fake/contact/" + id, {
+					method: "PUT",
+					mode: "cors",
+					redirect: "follow",
+					headers: new Headers({
+						"Content-Type": "application/json"
+					}),
+					body: JSON.stringify({
+						full_name: data.name,
+						email: data.email,
+						agenda_slug: "Richard_Contacts",
+						address: data.address,
+						phone: data.phone
+					})
+				});
+				response = await response.json();
+				getActions().getAllContact();
+				getActions().setUser("");
+			},
 
-				//reset the global store
-				setStore({ demo: demo });
+			deleteContact: async id => {
+				let response = await fetch(`https://assets.breatheco.de/apis/fake/contact/` + id, {
+					method: "DELETE",
+					mode: "cors",
+					redirect: "follow",
+					headers: new Headers({
+						"Content-Type": "application/json"
+					})
+				});
+				response = await response.json();
+				getActions().getAllContact();
 			}
 		}
 	};
