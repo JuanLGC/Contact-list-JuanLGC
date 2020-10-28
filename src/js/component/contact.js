@@ -11,17 +11,23 @@ export const Contact = props => {
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 	return (
-		<div className="d-flex col-8 m-auto border border-secondary rounded">
-			<img
-				src="https://www.infojobs.net/logo/logo/do-get.xhtml?id=37838782202&dgv=300474299537494183"
-				className="col-2 "
-			/>
+		<div className="contact-card">
+			<div className="picture-frame" />
 
 			<div className="col-4 bg-green">
 				<h3>{props.name}</h3>
-				<p className="mb-0">{props.address}</p>
-				<p className="mb-0">{props.phone}</p>
-				<p className="mb-0">{props.email}</p>
+				<p className="mb-0">
+					<i className="fa fa-map-marker" aria-hidden="true" />
+					{props.address}
+				</p>
+				<p className="mb-0">
+					<i className="fa fa-phone" aria-hidden="true" />
+					{props.phone}
+				</p>
+				<p className="mb-0">
+					<i className="fa fa-envelope-o" aria-hidden="true" />
+					{props.email}
+				</p>
 			</div>
 			<div className="col-3 d-flex ml-auto ">
 				<div className="row ml-auto my-2">

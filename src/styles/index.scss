@@ -1,3 +1,75 @@
-/* 
-    General Styles
-*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+
+
+body{
+    background-image: url("https://lh3.googleusercontent.com/proxy/i7rJ8bsJKush0JyPBIPbPt2jRnNBFXK_OngWyQFqVdUYDv7mCXig82wpmhclNu66fb62Ug_N5e0VFaXYzCHMM9QdEcdvSnVmTjbWRjEu0ACmgBSz4aronaQppvbMdw");
+    background-size: cover; 
+    font-family: 'Roboto', sans-serif;
+
+}
+.container {
+    height: 100vh;
+}
+
+.picture-frame {
+    border-radius: 100%;
+    min-width: 7rem;
+    height: 7rem;
+    background-image: url("https://www.cbc.ca/kidscbc2/content/the_feed/funnyfaces_dog.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.contact-card {
+    display: flex;
+    margin: 1rem auto;
+    width: 70vw;
+    border-radius: 4px;
+    padding: 1rem;
+    background-color: #b2cef67a;
+    box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), ;
+}
+
+.contact-box {
+    padding: 1vh 0;
+    background-color: white;
+    border-radius: 4px;
+    width: 73vw;
+    margin: auto;
+}
+
+h1 {
+    font-family: 'Parisienne', cursive;
+    text-align: center;
+    padding: 1rem;
+}
+
+h3 {
+    margin: 0;
+}
+
+p {
+    color: rgb(165, 165, 165)
+}
+
+i {
+    margin: 0 0.3rem;
+}
+
+.fa-trash-o {
+    padding-top: .2rem
+}
+
+.btn-add-contact {
+    border: none;
+    border-radius: 3px;
+    padding: .5rem;
+    background-color: #4590f1;
+    color: white;
+    margin: .5rem 0 0 1.5vw;
+}
+
+.btn-add-contact:hover {
+    background-color: #227aee;
+}

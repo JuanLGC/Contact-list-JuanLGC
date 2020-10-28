@@ -18,13 +18,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: JSON.stringify({
 						full_name: data.name,
 						email: data.email,
-						agenda_slug: "Richard_Contacts",
+						agenda_slug: "Juan_Contacts",
 						address: data.address,
 						phone: data.phone
 					})
 				});
 				response = await response.json();
-				getActions().getAllContact();
+				getActions().getAllContacts();
 			},
 			getContact: async id => {
 				let response = await fetch(`https://assets.breatheco.de/apis/fake/contact/` + id, {
@@ -38,8 +38,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				response = await response.json();
 				getActions().setUser(response);
 			},
-			getAllContact: async () => {
-				let response = await fetch(`https://assets.breatheco.de/apis/fake/contact/agenda/Richard_Contacts`, {
+			getAllContacts: async () => {
+				let response = await fetch(`https://assets.breatheco.de/apis/fake/contact/agenda/Juan_Contacts`, {
 					method: "GET",
 					mode: "cors",
 					redirect: "follow",
@@ -61,13 +61,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: JSON.stringify({
 						full_name: data.name,
 						email: data.email,
-						agenda_slug: "Richard_Contacts",
+						agenda_slug: "Juan_Contacts",
 						address: data.address,
 						phone: data.phone
 					})
 				});
 				response = await response.json();
-				getActions().getAllContact();
+				getActions().getAllContacts();
 				getActions().setUser("");
 			},
 
@@ -81,7 +81,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				});
 				response = await response.json();
-				getActions().getAllContact();
+				getActions().getAllContacts();
 			}
 		}
 	};
