@@ -20,6 +20,9 @@ body{
     background-position: center;
     background-size: cover;
 }
+.picture-frame:hover {
+    animation: pictureFrameModifier .5s ease forwards;
+}
 
 .contact-card {
     display: flex;
@@ -72,4 +75,13 @@ i {
 
 .btn-add-contact:hover {
     background-color: #227aee;
+}
+
+@keyframes pictureFrameModifier {
+  from {
+      border-radius: 100%;
+    }
+  to {
+      border-radius: 3%;
+  }
 }
